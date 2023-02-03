@@ -29,9 +29,8 @@ struct ContentView: View {
     var body: some View {
         Button {
             withFeedback(
-                .selection.combined(
-                    .audio(.keyboardPress)
-                )
+                .selection
+                .combined(.audio(.keyboardPress))
             ) {
                 // state change
             }
