@@ -30,7 +30,9 @@ struct ContentView: View {
         Button {
             withFeedback(
                 .selection
-                .combined(.audio(.keyboardPress))
+                .combined(
+                    .audio(.keyboardPress)
+                )
             ) {
                 // state change
             }
