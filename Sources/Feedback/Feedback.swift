@@ -22,6 +22,8 @@ public extension View {
     ///   - value: The value to observe for changes
     func feedback<V>(_ feedback: AnyFeedback, value: V) -> some View where V: Equatable {
         modifier(FeedbackModifier(feedback: feedback, value: value))
+
+//        Toggle("", isOn: .constant(true).haptic(<#T##feedback: AnyFeedback##AnyFeedback#>)
     }
 }
 

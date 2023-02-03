@@ -5,7 +5,7 @@ public extension Binding {
     /// - Parameter feedback: Feedback performed when the binding value changes.
     ///
     /// - Returns: A new binding.
-    func haptic(_ feedback: AnyFeedback = .haptic(.selection)) -> Self {
+    func feedback(_ feedback: AnyFeedback = .haptic(.selection)) -> Self {
         Binding(
             get: { wrappedValue },
             set: { newValue in
@@ -21,7 +21,7 @@ public extension Binding where Value: BinaryFloatingPoint {
     /// - Parameter step: The step required to trigger a binding change
     ///
     /// - Returns: A new binding.
-    func haptic(_ feedback: AnyFeedback = .haptic(.selection), step: Value) -> Self {
+    func feedback(_ feedback: AnyFeedback = .haptic(.selection), step: Value) -> Self {
         Binding(
             get: { wrappedValue },
             set: { newValue in
@@ -44,7 +44,7 @@ public extension Binding where Value: BinaryInteger {
     /// - Parameter step: The step required to trigger a binding change
     ///
     /// - Returns: A new binding.
-    func haptic(_ feedback: AnyFeedback = .haptic(.selection), step: Value) -> Self {
+    func feedback(_ feedback: AnyFeedback = .haptic(.selection), step: Value) -> Self {
         Binding(
             get: { wrappedValue },
             set: { newValue in
