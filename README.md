@@ -29,7 +29,7 @@ struct ContentView: View {
     var body: some View {
         Button {
             withFeedback(
-                .selection
+                .haptic(.selection)
                 .combined(
                     .audio(.keyboardPress)
                 )
@@ -50,7 +50,7 @@ struct ContentView: View {
     @State private var toggle: Bool = false
     
     var body: some View {
-        Toggle("Toggle", isOn: $toggle.feedback(.selection))
+        Toggle("Toggle", isOn: $toggle.feedback(.haptic(.selection)))
     }
 }
 ```
