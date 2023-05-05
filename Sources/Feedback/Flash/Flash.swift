@@ -23,6 +23,7 @@ private struct Flash: Feedback {
     
     @MainActor
     func perform() async {
+#if os(iOS)
         guard
             let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
             let window = scene.windows.first else { return }
@@ -43,6 +44,9 @@ private struct Flash: Feedback {
                 view.removeFromSuperview()
             }
         }
+#else
+#warning("macOS flash not implemented")
+#endif
     }
 
     let filters = [

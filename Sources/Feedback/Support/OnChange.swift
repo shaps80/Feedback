@@ -4,7 +4,7 @@ import Combine
 internal extension Backport where Wrapped: View {
     @ViewBuilder
     func onChange<Value: Equatable>(of value: Value, perform action: @escaping (Value) -> Void) -> some View {
-        if #available(iOS 14, *) {
+        if #available(iOS 14, macOS 11, *) {
             content.onChange(of: value, perform: action)
         } else {
             content.modifier(ChangeModifier(value: value, action: action))

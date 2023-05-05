@@ -6,6 +6,7 @@ public protocol Feedback {
     func perform() async
 }
 
+#if os(iOS)
 /// Returns the result of recomputing the view's body with the provided animation.
 /// - Parameters:
 ///   - feedback: The feedback to perform when the body is called
@@ -14,6 +15,16 @@ public func withFeedback<Result>(_ feedback: AnyFeedback = .haptic(.selection), 
     Task { await feedback.perform() }
     return try body()
 }
+#else
+/// Returns the result of recomputing the view's body with the provided animation.
+/// - Parameters:
+///   - feedback: The feedback to perform when the body is called
+///   - body: The content of this value will be called alongside the feedback
+public func withFeedback<Result>(_ feedback: AnyFeedback = .haptic(.haptic(intensity: 1, sharpness: 1)), _ body: () throws -> Result) rethrows -> Result {
+    Task { await feedback.perform() }
+    return try body()
+}
+#endif
 
 public extension View {
     /// Attaches some feedback to this view when the specified value changes

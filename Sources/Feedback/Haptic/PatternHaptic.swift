@@ -72,7 +72,7 @@ private struct PatternHaptic: Feedback {
             case let .events(events):
                 pattern = try CHHapticPattern(events: events.map { $0.event }, parameters: [])
             case let .url(url):
-                if #available(iOS 16, *) {
+                if #available(iOS 16, macOS 13, *) {
                     pattern = try CHHapticPattern(contentsOf: url)
                 } else {
                     fatalError("This should never occur since the API will be limited to iOS 16+")
